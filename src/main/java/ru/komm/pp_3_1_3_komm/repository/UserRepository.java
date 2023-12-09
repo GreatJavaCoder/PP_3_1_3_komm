@@ -9,7 +9,7 @@ import ru.komm.pp_3_1_3_komm.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    @Query(" select u from User u where u.name = :name ")
+    @Query(" select u from User u left join fetch u.roles where u.name = :name ")
     User findByUsername(@Param("name") String name);
 
 }
